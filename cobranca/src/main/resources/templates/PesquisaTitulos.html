@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="LayoutPadrao">
+    
+<head>
+   <meta charset="UTF-8"/>
+   <title>Pesquisa de títulos</title>    
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   <link rel="stylesheet" href="/css/style.css"/> />
+</head>
+
+<body>
+   <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img src="/images/logo-algaworks.png">
+                </a>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <div class="card">
+        <div class="card-header">
+            <h4>Pesquisa de títulos</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                     <th>#</th>
+                    <th>Decrição</th>
+                    <th>Data de vencimento</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="titulo: ${titulos}">
+                        <td th:text="${titulo.codigo}"></td>
+                        <td th:text="${titulo.descricao}"></td>
+                        <td th:text="${{titulo.dataVencimento}}"></td>
+                        <td th:text="|R$ ${{titulo.valor}}|"></td>
+                        <td>
+                            <span 
+                                th:text="${titulo.status.descricao}" 
+                                th:classappend="${titulo.pendente ? 'text-danger' : 'text-success'}"
+                            > </span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum título foi encontrado</td>
+                    </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>  
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
