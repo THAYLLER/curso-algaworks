@@ -1,0 +1,5 @@
+com/estudo/cobranca/repository/Titulos.class
+com/estudo/cobranca/model/Titulo.class
+com/estudo/cobranca/controller/Titulocontroller.class
+com/estudo/cobranca/model/Statustitulo.class
+com/estudo/cobranca/CobrancaApplication.class
