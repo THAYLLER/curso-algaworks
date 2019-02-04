@@ -1,0 +1,9 @@
+/home/darthd3v/NetBeansProjects/socialbooks/src/main/java/com/algaworks/socialbooks/services/LivrosService.java
+/home/darthd3v/NetBeansProjects/socialbooks/src/main/java/com/algaworks/socialbooks/domain/Comentario.java
+/home/darthd3v/NetBeansProjects/socialbooks/src/main/java/com/algaworks/socialbooks/handler/ResourceExceptionHandler.java
+/home/darthd3v/NetBeansProjects/socialbooks/src/main/java/com/algaworks/socialbooks/repository/LivrosRepository.java
+/home/darthd3v/NetBeansProjects/socialbooks/src/main/java/com/algaworks/socialbooks/repository/ComentariosRepository.java
+/home/darthd3v/NetBeansProjects/socialbooks/src/main/java/com/algaworks/socialbooks/resources/LivrosResources.java
+/home/darthd3v/NetBeansProjects/socialbooks/src/main/java/com/algaworks/socialbooks/services/exceptions/LivroNaoEncontradoException.java
+/home/darthd3v/NetBeansProjects/socialbooks/src/main/java/com/algaworks/socialbooks/SocialbooksapiApplication.java
+/home/darthd3v/NetBeansProjects/socialbooks/src/main/java/com/algaworks/socialbooks/domain/Livro.java
