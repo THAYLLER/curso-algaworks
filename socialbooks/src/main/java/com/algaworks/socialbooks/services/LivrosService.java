@@ -16,14 +16,15 @@ public class LivrosService {
     
     @Autowired
     private LivrosRepository livrosRepository;
+    @Autowired
     private ComentariosRepository comentariosRepository;
     
     public  List<Livro> listar(){
         
         return livrosRepository.findAll();
     }
-    public Optional<Livro> buscar(Long id) {
-            Optional<Livro> livro = livrosRepository.findById(id);
+    public Livro buscar(Long id) {
+            Livro livro = livrosRepository.getOne(id);
             
             if(livro == null) throw  new LivroNaoEncontradoException("O livro não pode ser encontrado");
             
@@ -58,10 +59,16 @@ public class LivrosService {
     
     public Comentario salvarComentario(Long livroId, Comentario comentario){
         
-        Optional<Livro> livro = buscar(livroId);
-        //comentario.setLivro(livro);
-        //comentario.setData(new Date());
+        Livro livro = buscar(livroId);
+        comentario.setLivro(livro);
+        comentario.setData(new Date());
         
         return comentariosRepository.save(comentario);
+    }
+    public List<Comentario> listaeComentario(Long id ) {
+        
+        Livro livro = buscar(id);
+        return  livro.getComentarios();
+        
     }
 }

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.algaworks.socialbooks.SocialbooksapiApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 6.056 s <<< FAILURE! - in com.algaworks.socialbooks.SocialbooksapiApplicationTests
-contextLoads(com.algaworks.socialbooks.SocialbooksapiApplicationTests)  Time elapsed: 0.003 s  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 5.401 s <<< FAILURE! - in com.algaworks.socialbooks.SocialbooksapiApplicationTests
+contextLoads(com.algaworks.socialbooks.SocialbooksapiApplicationTests)  Time elapsed: 0.01 s  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
 Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.AnnotationException: @OneToOne or @ManyToOne on com.algaworks.socialbooks.domain.Comentario.livro references an unknown entity: java.util.Optional
 Caused by: org.hibernate.AnnotationException: @OneToOne or @ManyToOne on com.algaworks.socialbooks.domain.Comentario.livro references an unknown entity: java.util.Optional

@@ -10,73 +10,70 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.util.Optional;
-import javax.persistence.Temporal;
-
-
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Comentario {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	private String texto;
+	
+	@JsonInclude(Include.NON_NULL)
+	private String usuario;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	@JsonInclude(Include.NON_NULL)
+	private Date data;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "LIVRO_ID")
+	@JsonIgnore
+	private Livro livro;
 
-    private String texto;
+	public Long getId() {
+		return id;
+	}
 
-    private String usuario;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date data;
+	public String getTexto() {
+		return texto;
+	}
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "LIVRO_ID")
-    @JsonIgnore
-    private Optional<Livro> livro;
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public String getUsuario() {
+		return usuario;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
 
-    public String getTexto() {
-        return texto;
-    }
+	public Date getData() {
+		return data;
+	}
 
-    public void setTexto(String texto) {
-        this.texto = texto;
-    }
+	public void setData(Date data) {
+		this.data = data;
+	}
 
-    public String getUsuario() {
-        return usuario;
-    }
+	public Livro getLivro() {
+		return livro;
+	}
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
-
-    public Optional<Livro> getLivro() {
-        return livro;
-    }
-
-    public void setLivro(Optional<Livro> livro) {
-        this.livro = livro;
-    }
-
-    
-    
+	public void setLivro(Livro livro) {
+		this.livro = livro;
+	}
+	
 }

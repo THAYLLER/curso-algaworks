@@ -17,6 +17,12 @@ import java.util.Optional;
 import com.algaworks.socialbooks.domain.Livro;
 import com.algaworks.socialbooks.domain.Comentario;
 import com.algaworks.socialbooks.services.LivrosService;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import org.springframework.http.CacheControl;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import sun.text.normalizer.ICUBinary;
 
 
 
@@ -45,9 +51,10 @@ public class LivrosResources {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> buscar(@PathVariable("id") Long id) {
         
-        Optional<Livro> livro = livrosService.buscar(id);
+        CacheControl cacheControl = CacheControl.maxAge(20, TimeUnit.SECONDS);
+        Livro livro = livrosService.buscar(id);
         
-        return ResponseEntity.status(HttpStatus.OK).body(livro);
+        return ResponseEntity.status(HttpStatus.OK).cacheControl(cacheControl).body(livro);
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deletar(@PathVariable("id") Long id) {
@@ -67,10 +74,21 @@ public class LivrosResources {
     @RequestMapping(value = "/{id}/comentarios",method = RequestMethod.POST)
     public ResponseEntity<?> adicionarComentario(@PathVariable("id") Long livroId, @RequestBody Comentario comentario) {
         
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        
+        comentario.setUsuario(auth.getName());
+        
         livrosService.salvarComentario(livroId, comentario);
         
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().build().toUri();
         
         return ResponseEntity.created(uri).build();
+    }
+    @RequestMapping(value = "/{id}/comentarios",method = RequestMethod.GET)
+    public ResponseEntity<List<Comentario>> listarComentarios(@PathVariable("id") Long id) {
+         
+        List<Comentario> comentarios = livrosService.listaeComentario(id);
+        
+        return ResponseEntity.status(HttpStatus.OK).body(comentarios);
     }
 }

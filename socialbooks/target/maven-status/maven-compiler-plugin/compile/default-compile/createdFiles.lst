@@ -1,9 +1,9 @@
-com/algaworks/socialbooks/repository/LivrosRepository.class
 com/algaworks/socialbooks/resources/LivrosResources.class
-com/algaworks/socialbooks/handler/ResourceExceptionHandler.class
-com/algaworks/socialbooks/services/LivrosService.class
 com/algaworks/socialbooks/services/exceptions/LivroNaoEncontradoException.class
 com/algaworks/socialbooks/domain/Livro.class
 com/algaworks/socialbooks/domain/Comentario.class
+com/algaworks/socialbooks/repository/LivrosRepository.class
+com/algaworks/socialbooks/handler/ResourceExceptionHandler.class
+com/algaworks/socialbooks/services/LivrosService.class
 com/algaworks/socialbooks/repository/ComentariosRepository.class
 com/algaworks/socialbooks/SocialbooksapiApplication.class
